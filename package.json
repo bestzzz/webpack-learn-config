@@ -1,0 +1,39 @@
+{
+  "name": "webpack-learn-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bestzzz/webpack-learn-project.git",
+  "author": "左钊 <zuozhao@mmears.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "autoprefixer": "9.4.3",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.0",
+    "eslint": "^7.11.0",
+    "eslint-loader": "^4.0.2",
+    "html-webpack-plugin": "^4.5.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.2",
+    "mini-css-extract-plugin": "^1.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss-loader": "3.0.0",
+    "style-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.28.2",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.12.1"
+  }
+}
