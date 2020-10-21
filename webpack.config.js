@@ -23,6 +23,17 @@ module.exports = {
     path: path.resolve('build'), // 目录 路径必须是一个绝对路径
     // publicPath: 'http://mmears.com/static/', // 统一给静态资源加上域名(cdn服务器)，也可以单独在对应文件的loader中的options参数里加
   }, // 出口
+
+  // 增加映射文件 可以帮助我们调试源代码
+  // 1.source-map 源码映射 会生成一个sourcemap文件 报错时会标注出报错的行列 便于调试
+  devtool: 'source-map',
+  // 2.eval-source-map 不会产生单独的文件 但是可以显示行和列
+  // devtool: 'eval-source-map',
+  // 3.不会产生行和列 但是是一个单独的映射文件 不方便调试 但是可以保留一份源文件
+  // devtool: 'cheap-module-source-map',
+  // 4.不会产生文件 集成在打包后的文件中 不会标注行和列
+  // devtool: 'cheap-module-eval-source-map',
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html', // 模版相对路径
