@@ -34,6 +34,14 @@ module.exports = {
   // 4.不会产生文件 集成在打包后的文件中 不会标注行和列
   // devtool: 'cheap-module-eval-source-map',
 
+  // 监控 代码一变就实时build
+  // watch: true,
+  // watchOptions: {
+  //   poll: 1000, // 每秒 问我 1000次
+  //   aggregateTimeout: 500, // 防抖
+  //   ignored: /node_modules/, // 不需要进行监控的文件
+  // }, // 监控的配置参数
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html', // 模版相对路径
