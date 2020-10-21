@@ -21,6 +21,7 @@ module.exports = {
   output: {
     filename: 'bundle.js', // 打包后的文件名
     path: path.resolve('build'), // 路径必须是一个绝对路径
+    // publicPath: 'http://mmears.com/static/', // 统一给静态资源加上域名(cdn服务器)，也可以单独在对应文件的loader中的options参数里加
   }, // 出口
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,7 +34,7 @@ module.exports = {
       hash: true // 脚本文件增加hash值
     }),
     new MiniCssExtractPlugin({
-      filename: 'main.css',
+      filename: 'css/main.css', // 将css样式打包到css目录下的main文件中
     }),
     new webpack.ProvidePlugin({ // 在每个模块中都注入$
       $: 'jquery'
@@ -57,8 +58,10 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 200*1024, // 限制200k
+            limit: 1, // 限制200k
             esModule: false,
+            outputPath: '/img/', // 将图片资源放到img目录下
+            // publicPath: 'http://mmears.com/static/', // 统一给静态资源加上域名(cdn服务器)
           }
         }
       },
