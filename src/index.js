@@ -4,6 +4,7 @@ console.log(str1);
 
 require('./index.css');
 require('./index.less');
+require('./image');
 
 const fn = () => {
   console.log('es6');

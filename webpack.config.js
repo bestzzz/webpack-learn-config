@@ -46,6 +46,22 @@ module.exports = {
       // loader的顺序 默认是从右向左执行 从下向上执行
       // loader还可以写成对象方式 (可以多传一些配置参数)
 
+      {
+        test: /\.html$/,
+        use: 'html-withimg-loader' // 在html中引入图片 需要此loader做处理
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        // 做一个限制 当我们的图片小于多少k的时候 用base64转化，否则用file-loader产生真实的图片
+        // use: 'file-loader'
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 200*1024, // 限制200k
+            esModule: false,
+          }
+        }
+      },
       // {
       //   test: require.resolve('jquery'),
       //   use: 'expose-loader?$'
