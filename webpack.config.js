@@ -3,10 +3,11 @@
 const path = require('path'); // 将路径转化为绝对路径
 console.log(path.resolve(__dirname, 'dist'));
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成html文件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css打包到一个文件中通过link标签引入, 不然样式是以style标签的形式直接添加到html中的
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css的插件
+const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // js优化工具，通常和上面的压缩css插件一起使用
+const webpack = require('webpack');
 
 module.exports = {
   devServer: {
@@ -34,6 +35,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'main.css',
     }),
+    new webpack.ProvidePlugin({ // 在每个模块中都注入$
+      $: 'jquery'
+    })
   ], // 数组 放着所有的webpack插件
   module: {
     rules: [
@@ -41,6 +45,11 @@ module.exports = {
       // loader的用法 字符串只用于一个loader的情况 如果多个loader的话需要一个数组
       // loader的顺序 默认是从右向左执行 从下向上执行
       // loader还可以写成对象方式 (可以多传一些配置参数)
+
+      // {
+      //   test: require.resolve('jquery'),
+      //   use: 'expose-loader?$'
+      // }, // 将jquery暴露到window中
 
       // css-loader 解析 @import这种语法的
       // style-loader 它是把css 插入到head的标签中
@@ -77,21 +86,21 @@ module.exports = {
             ],
             plugins: [
               // '@babel/plugin-proposal-class-properties'
-              ["@babel/plugin-proposal-decorators", { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-              '@babel/plugin-transform-runtime'
+              ["@babel/plugin-proposal-decorators", { "legacy": true }], // 将es6的修饰器转为es5
+              ["@babel/plugin-proposal-class-properties", { "loose" : true }], // 将es6的class类转为es5
+              '@babel/plugin-transform-runtime' // 和上面的class-properties一起使用，装有class-properties的补丁包，一起打包上线
             ]
           }
         },
-        include: path.resolve(__dirname, 'src'),
-        exclude: '/node_modules/'
+        include: path.resolve(__dirname, 'src'), // 只包含当前目录下的src目录下的js文件，其余文件不予打包
+        exclude: '/node_modules/' // 不包括node_modules目录下的js文件
       },
       {
         test: /\.js$/,
         use: {
           loader: 'eslint-loader',
         },
-        enforce: "pre"
+        enforce: "pre" // 优先级高 pre在其他loader之前
       }
     ] // 规则 
   }, // 模块

@@ -1,6 +1,6 @@
-let str = require('./a');
+const str1 = require('./a');
 
-console.log(str);
+console.log(str1);
 
 require('./index.css');
 require('./index.less');
@@ -25,3 +25,6 @@ function * gen() {
   yield 1;
 }
 console.log(gen().next());
+
+// import $ from 'jquery';
+console.log($); // 通过webpack.ProvidePlugin插件 将每个模块都注入了$。所以可以不import直接使用。
