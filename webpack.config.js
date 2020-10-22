@@ -5,9 +5,12 @@ console.log(path.resolve(__dirname, 'dist'));
 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成html文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css打包到一个文件中通过link标签引入, 不然样式是以style标签的形式直接添加到html中的
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // 每次build时候 清空上次build的文件
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // 拷贝插件 将某目录直接拷贝到打包目录下 例如将doc拷贝到build下
+const webpack = require('webpack');
+
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css的插件
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // js优化工具，通常和上面的压缩css插件一起使用
-const webpack = require('webpack');
 
 module.exports = {
   devServer: {
@@ -57,7 +60,17 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({ // 在每个模块中都注入$
       $: 'jquery'
-    })
+    }),
+    new CleanWebpackPlugin('./build'),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: './doc',
+          to: './'
+        }
+      ]
+    ),
+    new webpack.BannerPlugin('make 2020.10 by zz'), // 将版权声明插入到js文件中
   ], // 数组 放着所有的webpack插件
   module: {
     rules: [
