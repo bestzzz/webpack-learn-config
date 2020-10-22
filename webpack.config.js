@@ -81,7 +81,7 @@ module.exports = {
     new webpack.ProvidePlugin({ // 在每个模块中都注入$
       $: 'jquery'
     }),
-    new CleanWebpackPlugin('./build'),
+    // new CleanWebpackPlugin('./build'),
     new CopyWebpackPlugin(
       [
         {
