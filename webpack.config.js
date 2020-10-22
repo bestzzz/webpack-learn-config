@@ -95,8 +95,10 @@ module.exports = {
       DEV: JSON.stringify('dev'),
       PRODUCTION: JSON.stringify('production'),
     }), // 配置环境变量
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/),
   ], // 数组 放着所有的webpack插件
   module: {
+    noParse: /jquery/, // 假如一个外部引用模块类内没有引用其他外部模块，则可以使用noParse来忽略这个外部包的解析。谨慎使用，一定要确定这个包没有外部引用时再使用。
     rules: [
       // loader的特点 功能单一
       // loader的用法 字符串只用于一个loader的情况 如果多个loader的话需要一个数组
