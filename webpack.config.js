@@ -91,6 +91,10 @@ module.exports = {
       ]
     ),
     new webpack.BannerPlugin('make 2020.10 by zz'), // 将版权声明插入到js文件中
+    new webpack.DefinePlugin({
+      DEV: JSON.stringify('dev'),
+      PRODUCTION: JSON.stringify('production'),
+    }), // 配置环境变量
   ], // 数组 放着所有的webpack插件
   module: {
     rules: [

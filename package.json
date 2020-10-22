@@ -7,6 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "build-dev": "webpack --config webpack.dev.js",
+    "build-prod": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server"
   },
   "devDependencies": {
@@ -37,7 +39,8 @@
     "url-loader": "^4.1.1",
     "webpack": "^4.28.2",
     "webpack-cli": "3.1.2",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

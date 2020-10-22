@@ -30,3 +30,5 @@ console.log(gen().next());
 
 // import $ from 'jquery';
 console.log($); // 通过webpack.ProvidePlugin插件 将每个模块都注入了$。所以可以不import直接使用。
+
+console.log(DEV, PRODUCTION, '环境变量');
