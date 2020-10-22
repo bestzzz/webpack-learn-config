@@ -5,6 +5,7 @@ console.log(str1);
 require('./index.css');
 require('./index.less');
 require('./image');
+require('./request');
 
 const fn = () => {
   console.log('es6');

@@ -14,7 +14,7 @@ const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // js优化工
 
 module.exports = {
   devServer: {
-    port: '8081',
+    port: '8080',
     progress: true,
     contentBase: './build',
     compress: true
@@ -26,6 +26,19 @@ module.exports = {
     path: path.resolve('build'), // 目录 路径必须是一个绝对路径
     // publicPath: 'http://mmears.com/static/', // 统一给静态资源加上域名(cdn服务器)，也可以单独在对应文件的loader中的options参数里加
   }, // 出口
+
+  devServer: {
+    // 1. 钩子函数，可以用来mock请求数据
+    before(server) {
+      server.get('/api/user', (req, res) => {
+        res.json({name: '这是一条由before钩子生成的mock数据'});
+      })
+    },
+    // 2. 配置一个代理，将/api开头的请求代理到端口号为8000的服务上。可以解决开发环境中的跨域问题。
+    // proxy: {
+    //   '/api': 'http://localhost:8000'
+    // }
+  },
 
   // 增加映射文件 可以帮助我们调试源代码
   // 1.source-map 源码映射 会生成一个sourcemap文件 报错时会标注出报错的行列 便于调试
