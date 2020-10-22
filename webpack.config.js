@@ -29,7 +29,7 @@ module.exports = {
 
   // 解析属性
   resolve: {
-    modules: path.resolve('node_modules'), // 模块查找路径
+    modules: [path.resolve('node_modules')], // 模块查找路径
     extensions: ['.js', '.css', '.json', '.jsx'], // 扩展名, 用于import引用时省略文件后缀
   },
 
