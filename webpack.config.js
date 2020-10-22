@@ -27,6 +27,7 @@ module.exports = {
     // publicPath: 'http://mmears.com/static/', // 统一给静态资源加上域名(cdn服务器)，也可以单独在对应文件的loader中的options参数里加
   }, // 出口
 
+  // 解析属性
   resolve: {
     modules: path.resolve('node_modules'), // 模块查找路径
     extensions: ['.js', '.css', '.json', '.jsx'], // 扩展名, 用于import引用时省略文件后缀
