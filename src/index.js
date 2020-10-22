@@ -21,7 +21,7 @@ console.log(a.a, 'class');
 
 function log (fn) {
   console.log(fn, '@');
-};
+}
 
 function * gen() {
   yield 1;
