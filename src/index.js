@@ -34,3 +34,7 @@ console.log(gen().next());
 console.log($); // 通过webpack.ProvidePlugin插件 将每个模块都注入了$。所以可以不import直接使用。
 
 console.log(DEV, PRODUCTION, '环境变量');
+
+// 使用import语法打包production环境文件时 webpack会自动删除没有用到的代码。而require就不会。
+import calc from './calc';
+console.log(calc.sum(1, 2));

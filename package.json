@@ -9,6 +9,7 @@
     "build": "webpack --config webpack.config.js",
     "build-dev": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
+    "build-react": "webpack --config webpack.config.react.js",
     "dev": "webpack-dev-server"
   },
   "devDependencies": {
