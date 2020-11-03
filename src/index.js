@@ -7,6 +7,7 @@ require('./index.less');
 require('./image');
 require('./request');
 require('./moment');
+require('./reactTest');
 
 const fn = () => {
   console.log('es6');
