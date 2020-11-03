@@ -5,7 +5,7 @@ console.log(str1);
 require('./index.css');
 require('./index.less');
 require('./image');
-require('./request');
+// require('./request');
 require('./moment');
 require('./reactTest');
 

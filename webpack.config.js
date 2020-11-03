@@ -18,7 +18,8 @@ module.exports = {
     port: '8080',
     progress: true,
     contentBase: './build',
-    compress: true
+    compress: true,
+    hot: true, // 热更新
   }, // 开发服务器的配置
   mode: 'development', // 模式 默认两种 production development
   entry: './src/index.js', // 入口
@@ -100,6 +101,8 @@ module.exports = {
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, 'build', 'manifest.json')
     }), // 引用动态链接库。加快打包速度，当遇到import react文件时，webpack会优先去动态连接库中查找，找不到了再去重新打包react文件。
+    new webpack.NamedModulesPlugin(), // 打印热更新的模块路径
+    new webpack.HotModuleReplacementPlugin(), // 热更新插件
   ], // 数组 放着所有的webpack插件
   module: {
     noParse: /jquery/, // 假如一个外部引用模块类内没有引用其他外部模块，则可以使用noParse来忽略这个外部包的解析。谨慎使用，一定要确定这个包没有外部引用时再使用。
