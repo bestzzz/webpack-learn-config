@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); // 拷贝插件 将某
 const webpack = require('webpack');
 
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css的插件
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // js优化工具，通常和上面的压缩css插件一起使用
+const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin'); // js优化压缩工具，通常和上面的压缩css插件一起使用
 
 module.exports = {
   devServer: {
