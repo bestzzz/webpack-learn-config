@@ -104,6 +104,15 @@ module.exports = {
     new webpack.NamedModulesPlugin(), // 打印热更新的模块路径
     new webpack.HotModuleReplacementPlugin(), // 热更新插件
   ], // 数组 放着所有的webpack插件
+  // 解析loader
+  resolveLoader: {
+    // 先从node_modules里找，找不到了再去找后面的路径
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
+    // 别名
+    // alias: {
+    //   loader1: path.resolve(__dirname, 'loaders', 'loader1.js')
+    // }
+  },
   module: {
     noParse: /jquery/, // 假如一个外部引用模块类内没有引用其他外部模块，则可以使用noParse来忽略这个外部包的解析。谨慎使用，一定要确定这个包没有外部引用时再使用。
     rules: [
